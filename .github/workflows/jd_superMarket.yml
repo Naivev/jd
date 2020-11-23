@@ -2,7 +2,7 @@ name: jd_superMarket
 on:
   workflow_dispatch:
   schedule:
-    - cron: '15 3,8,13,17,22 * * *'
+    - cron: '11 1-23/5 * * *'
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -10,7 +10,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         with:
-          repository: zdrka/jd_scripts_mirror
+          repository: lxk0301/jd_scripts
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
@@ -25,7 +25,7 @@ jobs:
       - name: npm install
         run: |
           npm install
-      - name: '运行 【京小超】'
+      - name: '运行 【东东超市】'
         run: |
           node jd_superMarket.js
         env:
