@@ -2,7 +2,7 @@ name: jd_superMarket
 on:
   workflow_dispatch:
   schedule:
-    - cron: '59 * * * *'
+    - cron: '11 1-23/5 * * *'
 jobs:
   build:
     runs-on: ubuntu-latest
