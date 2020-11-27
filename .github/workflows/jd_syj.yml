@@ -9,10 +9,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-        push:
-        branches: [ master ]
         with:
-          repository: lxk0301/jd_scriptsmaster
+          repository: lxk0301/jd_scripts
+          source_branch: "master"
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
