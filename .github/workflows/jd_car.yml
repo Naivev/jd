@@ -2,7 +2,7 @@ name: jd_car
 on:
   workflow_dispatch:
   schedule:
-    - cron: '19 17 * * *'
+    - cron: '39 2 * * *'
 jobs:
   build:
     runs-on: ubuntu-latest
