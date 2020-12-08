@@ -45,7 +45,7 @@ const JD_API_HOST = 'https://api.m.jd.com/api';
     return;
   }
   await getRedRain();
-  if(!$.activityId) return
+  /* if(!$.activityId) return */
   for (let i = 0; i < cookiesArr.length; i++) {
     if (cookiesArr[i]) {
       cookie = cookiesArr[i];
@@ -104,13 +104,13 @@ function getRedRain() {
           if (safeGet(data)) {
             data = JSON.parse(data);
             if (data.data.iconArea) {
-              let act = data.data.iconArea[0]
+              /* let act = data.data.iconArea[0] */
               let url = data.data.iconArea[0].data.activityUrl
               $.activityId = url.substr(url.indexOf("id=") + 3)
-              $.startTime = act.startTime
+              /* $.startTime = act.startTime
               $.endTime = act.endTime
               console.log(`下一场红包雨开始时间：${new Date(act.startTime)}`)
-              console.log(`下一场红包雨结束时间：${new Date(act.endTime)}`)
+              console.log(`下一场红包雨结束时间：${new Date(act.endTime)}`) */
             } else {
               console.log(`暂无红包雨`)
             }
