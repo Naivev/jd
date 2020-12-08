@@ -66,6 +66,7 @@ const JD_API_HOST = 'https://api.m.jd.com/api';
         }
         continue
       }
+      await receiveRedRain();
       /* let nowTs = new Date().getTime() + new Date().getTimezoneOffset() * 60 * 1000 + 8 * 60 * 60 * 1000
       // console.log(nowTs, $.startTime, $.endTime)
       if ($.startTime <= nowTs && nowTs < $.endTime) {
@@ -73,10 +74,10 @@ const JD_API_HOST = 'https://api.m.jd.com/api';
       } else {
         console.log(`不在红包雨时间之内`)
         message += `不在红包雨时间之内`
-      }
+      } */
       await showMsg();
     }
-  } */
+  }
 })()
   .catch((e) => {
     $.log('', `❌ ${$.name}, 失败! 原因: ${e}!`, '')
