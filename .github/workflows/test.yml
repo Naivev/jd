@@ -1,5 +1,4 @@
-name: jd_live_redrain
-
+name: test
 on:
   workflow_dispatch:
   schedule:
