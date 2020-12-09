@@ -2,7 +2,7 @@ name: jd_live_redrain
 on:
   workflow_dispatch:
   schedule:
-    - cron: '55,56 15,0,2,4,6,8,10,11,12,14 * * *'
+    - cron: '59 15,0,2,4,6,8,10,11,12,14 * * *'
 jobs:
   build:
     runs-on: ubuntu-latest
