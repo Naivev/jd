@@ -15,7 +15,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         with:
-          repository: Naivev/jx
+          repository: Tersd07/JDScripts 
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
@@ -32,7 +32,7 @@ jobs:
           npm install
       - name: '运行 【京喜农场脚本】'
         run: |
-          node jd_nc.js
+          node jd_jxFarm.js
         env:
           JD_COOKIE: ${{ secrets.JD_COOKIE }}
           JD_USER_AGENT: ${{ secrets.JD_USER_AGENT }}
