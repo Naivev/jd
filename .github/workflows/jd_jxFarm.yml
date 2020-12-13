@@ -32,7 +32,7 @@ jobs:
           npm install
       - name: '运行 【京喜农场脚本】'
         run: |
-          node jd_jxFarm.js
+          node jd_nc.js
         env:
           JD_COOKIE: ${{ secrets.JD_COOKIE }}
           JD_USER_AGENT: ${{ secrets.JD_USER_AGENT }}
