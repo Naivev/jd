@@ -1,11 +1,11 @@
-name: jingxi
+name: jd_jingxi_sign
 
 on:
   workflow_dispatch:
   schedule:
     - cron: '0 1 * * *'
   repository_dispatch:
-    types: jingxi
+    types: jd_jingxi_sign
 jobs:
   build:
 
