@@ -2,7 +2,7 @@ name: jd_crazy_joy_coin
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 5 * * *'
+    - cron: '0 0 * * 1'
 jobs:
   build:
     runs-on: ubuntu-latest
