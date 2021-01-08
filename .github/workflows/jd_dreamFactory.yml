@@ -2,16 +2,18 @@ name: jd_dreamFactory
 on:
   workflow_dispatch:
   schedule:
-    - cron: '30 * * * *'
+    - cron: '25 * * * *'
+  watch:
+    types: started
+  repository_dispatch:
+    types: jd_scripts
 jobs:
   build:
     runs-on: ubuntu-latest
+    if: github.event.repository.owner.id == github.event.sender.id
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-        with:
-          repository: gcdd1993/jd_scripts
-          ref: master
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
@@ -22,7 +24,7 @@ jobs:
           cache-name: cache-node-modules
         with:
           path: node_modules
-          key: ${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('package-lock.json') }} # 使用 package-lock.json 的 Hash 作为缓存的 key。也可以使用 package.json 代替
+          key: ${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('package.json') }} # 使用 package-lock.json 的 Hash 作为缓存的 key。也可以使用 package.json 代替
       - name: npm install
         run: |
           npm install
