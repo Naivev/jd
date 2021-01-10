@@ -1,21 +1,17 @@
-name: jd_jxFarm
-
+name: jd_bookshop
 on:
   workflow_dispatch:
   schedule:
-    - cron: '10 4,10,23 * * *'
-  repository_dispatch:
-    types: jxFarm
+    - cron: '0 0,4,10 * * *'
 jobs:
   build:
-
     runs-on: ubuntu-latest
-    if: github.event.repository.owner.id == github.event.sender.id
     steps:
       - name: Checkout
         uses: actions/checkout@v2
         with:
-          repository: Tersd07/JDScripts 
+          repository: lxk0301/jd_scripts
+          ref: master
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
@@ -30,9 +26,9 @@ jobs:
       - name: npm install
         run: |
           npm install
-      - name: '运行 【京喜农场脚本】'
+      - name: '运行 【口袋书店】'
         run: |
-          node jd_jxFarm.js
+          node jd_bookshop.js
         env:
           JD_COOKIE: ${{ secrets.JD_COOKIE }}
           JD_USER_AGENT: ${{ secrets.JD_USER_AGENT }}
