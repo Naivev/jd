@@ -1,8 +1,8 @@
-name: jx_sign
+name: jd_mh
 on:
   workflow_dispatch:
   schedule:
-    - cron: '30 16 * * *'
+    - cron: '0 0 * * *'
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -10,8 +10,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         with:
-          repository: lxk0301/jd_scripts
-          ref: master
+          repository: shylocks/jd_scripts
+          ref: main
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
@@ -26,9 +26,10 @@ jobs:
       - name: npm install
         run: |
           npm install
-      - name: '运行 【京喜签到】'
+      - name: '运行 【盲盒抽京豆】'
         run: |
-          node jx_sign.js
+          curl -O https://raw.githubusercontent.com/shylocks/Loon/main/jd_mh.js > /dev/null 2>&1
+          node jd_mh.js
         env:
           JD_COOKIE: ${{ secrets.JD_COOKIE }}
           JD_DEBUG: ${{ secrets.JD_DEBUG }}
