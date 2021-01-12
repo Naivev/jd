@@ -10,7 +10,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         with:
-          repository: shylocks/Loon
+          repository: Naivev/jx
           ref: main
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
@@ -28,7 +28,6 @@ jobs:
           npm install
       - name: '运行 【盲盒抽京豆】'
         run: |
-          curl -O https://raw.githubusercontent.com/shylocks/Loon/main/jd_mh.js > /dev/null 2>&1
           node jd_mh.js
         env:
           JD_COOKIE: ${{ secrets.JD_COOKIE }}
