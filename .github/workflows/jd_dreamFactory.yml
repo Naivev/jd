@@ -52,4 +52,4 @@ jobs:
         run: |
           node jd_dreamFactory_tuan.js
         env:
-          JD_COOKIE: ${{ secrets.JD_COOKIE
+          JD_COOKIE: ${{ secrets.JD_COOKIE }}
