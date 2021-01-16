@@ -2,7 +2,7 @@ name: jd_gyec
 on:
   workflow_dispatch:
   schedule:
-    - cron: '50 15 * * *'
+    - cron: '30 * * * *'
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -10,7 +10,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         with:
-          repository: shylocks/Loon
+          repository: Naive/jx
           ref: main
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
