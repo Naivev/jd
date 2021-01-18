@@ -1,4 +1,4 @@
-name: jd_nian
+name: jd_nianCollect
 on:
   workflow_dispatch:
   schedule:
