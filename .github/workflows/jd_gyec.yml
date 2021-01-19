@@ -2,7 +2,7 @@ name: jd_gyec
 on:
   workflow_dispatch:
   schedule:
-    - cron: '30 * * * *'
+    - cron: '40 */3 * * *'
 jobs:
   build:
     runs-on: ubuntu-latest
