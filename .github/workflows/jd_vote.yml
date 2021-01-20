@@ -26,7 +26,7 @@ jobs:
       - name: npm install
         run: |
           npm install
-      - name: '运行 【jd_vote】'
+      - name: '运行 【pick】'
         run: |
           node jd_vote.js
         env:
