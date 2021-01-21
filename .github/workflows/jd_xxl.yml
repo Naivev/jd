@@ -2,7 +2,7 @@ name: jd_xxl
 on:
   workflow_dispatch:
   schedule:
-    - cron: '10 */3 * * *'
+    - cron: '20 */6 * * *'
 jobs:
   build:
     runs-on: ubuntu-latest
