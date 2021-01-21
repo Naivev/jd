@@ -35,3 +35,12 @@ jobs:
           TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
           TG_USER_ID: ${{ secrets.TG_USER_ID }}
           JD_USER_AGENT: ${{ secrets.JD_USER_AGENT }}
+      - name: '运行 【炸年兽AR】'
+        run: |
+          node jd_nian_ar.js
+        env:
+          JD_COOKIE: ${{ secrets.JD_COOKIE }}
+          JD_DEBUG: ${{ secrets.JD_DEBUG }}
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_USER_ID: ${{ secrets.TG_USER_ID }}
+          JD_USER_AGENT: ${{ secrets.JD_USER_AGENT }}
