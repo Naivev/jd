@@ -83,14 +83,6 @@ jobs:
           TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
           TG_USER_ID: ${{ secrets.TG_USER_ID }}
           JD_CASH_SHARECODES: ${{ secrets.JD_CASH_SHARECODES }}
-      - name: '运行 【京东年货节】'
-        run: |
-          node jd_nh.js
-        env:
-          JD_COOKIE: ${{ secrets.JD_COOKIE }}
-          JD_DEBUG: ${{ secrets.JD_DEBUG }}
-          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
-          TG_USER_ID: ${{ secrets.TG_USER_ID }}
       - name: '运行 【十元街】'
         run: |
           node jd_syj.js
