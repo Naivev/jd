@@ -1,4 +1,4 @@
-name: jd_festival
+name: jd_coupon
 on:
   workflow_dispatch:
   schedule:
