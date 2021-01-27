@@ -26,7 +26,7 @@ jobs:
       - name: npm install
         run: |
           npm install
-      - name: '运行 【京东快递】'
+      - name: '运行 【快递】'
         run: |
           node jd_kd.js
         env:
@@ -42,7 +42,7 @@ jobs:
           JD_DEBUG: ${{ secrets.JD_DEBUG }}
           TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
           TG_USER_ID: ${{ secrets.TG_USER_ID }}
-      - name: '运行 【京东秒秒币】'
+      - name: '运行 【秒秒币】'
         run: |
           node jd_ms.js
         env:
@@ -66,7 +66,7 @@ jobs:
           JD_DEBUG: ${{ secrets.JD_DEBUG }}
           TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
           TG_USER_ID: ${{ secrets.TG_USER_ID }}
-      - name: '运行 【京东汽车】'
+      - name: '运行 【汽车签到】'
         run: |
           node jd_car.js
         env:
@@ -83,7 +83,7 @@ jobs:
           TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
           TG_USER_ID: ${{ secrets.TG_USER_ID }}
           JD_CASH_SHARECODES: ${{ secrets.JD_CASH_SHARECODES }}
-      - name: '运行 【十元街】'
+      - name: '运行 【赚京豆】'
         run: |
           node jd_syj.js
         env:
@@ -99,7 +99,7 @@ jobs:
           JD_DEBUG: ${{ secrets.JD_DEBUG }}
           TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
           TG_USER_ID: ${{ secrets.TG_USER_ID }}
-      - name: '运行 【京东排行榜】'
+      - name: '运行 【排行榜】'
         run: |
           node jd_rankingList.js
         env:
@@ -107,7 +107,7 @@ jobs:
           JD_DEBUG: ${{ secrets.JD_DEBUG }}
           TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
           TG_USER_ID: ${{ secrets.TG_USER_ID }}
-      - name: '运行 【全民开红包脚本】'
+      - name: '运行 【全民开红包】'
         run: |
           node jd_redPacket.js
         env:
@@ -115,7 +115,7 @@ jobs:
           JD_DEBUG: ${{ secrets.JD_DEBUG }}
           TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
           TG_USER_ID: ${{ secrets.TG_USER_ID }}
-      - name: '运行 【京东赚赚】'
+      - name: '运行 【赚赚】'
         run: |
           node jd_jdzz.js
         env:
@@ -125,7 +125,7 @@ jobs:
           TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
           TG_USER_ID: ${{ secrets.TG_USER_ID }}
           JDZZ_SHARECODES: ${{ secrets.JDZZ_SHARECODES }}
-      - name: '运行 【京东抽奖机】'
+      - name: '运行 【抽奖机】'
         run: |
           node jd_lotteryMachine.js
         env:
@@ -143,7 +143,16 @@ jobs:
           TG_USER_ID: ${{ secrets.TG_USER_ID }}
           JDJOY_SHARECODES: ${{ secrets.JDJOY_SHARECODES }}
           JDJOY_HELPSELF: ${{ secrets.JDJOY_HELPSELF }}
-      - name: '运行 【京豆变动通知】'
+      - name: '运行 【家庭号】'
+        run: |
+          node jd_family.js
+        env:
+          JD_COOKIE: ${{ secrets.JD_COOKIE }}
+          JD_DEBUG: ${{ secrets.JD_DEBUG }}
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_USER_ID: ${{ secrets.TG_USER_ID }}
+          FAM: ${{ secrets.FAM }}
+      - name: '运行 【变动通知】'
         run: |
           node jd_bean_change.js
         env:
