@@ -2,7 +2,7 @@ name: jd_5g
 on:
   workflow_dispatch:
   schedule:
-    - cron: '40 15,21,3,9 * * *'
+    - cron: '50 15,21,3,9 * * *'
 jobs:
   build:
     runs-on: ubuntu-latest
