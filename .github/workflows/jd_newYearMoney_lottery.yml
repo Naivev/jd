@@ -1,8 +1,8 @@
-name: jd_festival
+name: jd_newYearMoney_lottery
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 16 * * *'
+    - cron: '46 0,3,7,11 1-10 2 *'
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -26,9 +26,9 @@ jobs:
       - name: npm install
         run: |
           npm install
-      - name: '运行 【手机年终奖】'
+      - name: '运行 【压岁钱抢百元卡】'
         run: |
-          node jd_festival.js
+          node jd_newYearMoney_lottery.js
         env:
           JD_COOKIE: ${{ secrets.JD_COOKIE }}
           JD_DEBUG: ${{ secrets.JD_DEBUG }}
