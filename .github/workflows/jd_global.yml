@@ -2,7 +2,7 @@ name: jd_global
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 9 * * *'
+    - cron: '0 2,10 * * *'
 jobs:
   build:
     runs-on: ubuntu-latest
