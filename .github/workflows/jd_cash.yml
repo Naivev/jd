@@ -1,4 +1,4 @@
-name: jd_bookshop
+name: jd_cash
 on:
   workflow_dispatch:
   schedule:
@@ -35,5 +35,3 @@ jobs:
           JD_DEBUG: ${{ secrets.JD_DEBUG }}
           TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
           TG_USER_ID: ${{ secrets.TG_USER_ID }}
-          BOOKSHOP_SHARECODES: ${{ secrets.BOOKSHOP_SHARECODES }}
-          PURCHASE_SHOPS: ${{ secrets.PURCHASE_SHOPS }}
