@@ -31,8 +31,8 @@ jobs:
           curl -O https://raw.githubusercontent.com/i-chenzhe/qx/main/jd_entertainment.js > /dev/null 2>&1
           sed -ri -e "s/let helpAuthor = true/let helpAuthor = false/g"\
           -e "s/('pt_key': )\\$\.UserName/\1'jd_' + Buffer.from(\$.UserName.repeat(3)).toString('hex').slice(0, 13).toLowerCase()/g"\
-          -e "s/await notify\.sendNotify/if((new Date().getUTCHours() + 8) % 24 > 6) &/g" jd_entertainment.js
-          node jd_entertainment.js
+          -e "s/await notify\.sendNotify/if((new Date().getUTCHours() + 8) % 24 <= 6) &/g"\
+          -e "s/\(([\`\"\'])(\\\x47\\\x49\\\x54\\\x48\\\x55\\\x42|GI.HUB)\\1\)/('GxIxTxHxUxB')/g" jd_entertainment.js          node jd_entertainment.js
         env:
           JD_COOKIE: ${{ secrets.JD_COOKIE }}
           JD_DEBUG: ${{ secrets.JD_DEBUG }}
