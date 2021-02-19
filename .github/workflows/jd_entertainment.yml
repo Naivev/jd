@@ -2,7 +2,7 @@ name: jd_entertainment
 on:
   workflow_dispatch:
   schedule:
-    - cron: '15 5,6 * * *'
+    - cron: '15 2 * * *'
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -26,16 +26,34 @@ jobs:
       - name: npm install
         run: |
           npm install
-      - name: '运行 【百变大咖秀】'
+      - name: '运行 【女装盲盒】'
         run: |
-          curl -O https://raw.githubusercontent.com/i-chenzhe/qx/main/jd_entertainment.js > /dev/null 2>&1
-          sed -ri -e "s/let helpAuthor = true/let helpAuthor = false/g"\
-            -e "s/('pt_key': )\\$\.UserName/\1'jd_' + Buffer.from(\$.UserName.repeat(3)).toString('hex').slice(0, 13).toLowerCase()/g"\
-            -e "s/await notify\.sendNotify/if((new Date().getUTCHours() + 8) % 24 <= 6) &/g"\
-            -e "s/\(([\`\"\'])(\\\x47\\\x49\\\x54\\\x48\\\x55\\\x42|GI.HUB)\\1\)/('GxIxTxHxUxB')/g" jd_entertainment.js
-          node jd_entertainment.js
+          node jd_nzmh.js
         env:
           JD_COOKIE: ${{ secrets.JD_COOKIE }}
+          JD_USER_AGENT: ${{ secrets.JD_USER_AGENT }}
+          JD_DEBUG: ${{ secrets.JD_DEBUG }}
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_USER_ID: ${{ secrets.TG_USER_ID }}
+      - name: '运行 【美丽研究院】'
+        run: |
+          node jd_beauty.js
+        env:
+          JD_COOKIE: ${{ secrets.JD_COOKIE }}
+          JD_USER_AGENT: ${{ secrets.JD_USER_AGENT }}
+          JD_DEBUG: ${{ secrets.JD_DEBUG }}
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_USER_ID: ${{ secrets.TG_USER_ID }}
+      - name: '运行 【沃尔玛粉丝互动脚本】'
+        run: |
+          curl -O https://raw.githubusercontent.com/i-chenzhe/qx/main/jd_walmart.js > /dev/null 2>&1
+          sed -ri -e "s/let helpAuthor = true/let helpAuthor = false/g"\
+            -e "s/await notify\.sendNotify/console.log/g"\
+            -e "s/\(([\`\"\'])(\\\x47\\\x49\\\x54\\\x48\\\x55\\\x42|GI.HUB)\\1\)/('GxIxTxHxUxB')/g" jd_walmart.js
+          node jd_walmart.js
+        env:
+          JD_COOKIE: ${{ secrets.JD_COOKIE }}
+          JD_USER_AGENT: ${{ secrets.JD_USER_AGENT }}
           JD_DEBUG: ${{ secrets.JD_DEBUG }}
           TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
           TG_USER_ID: ${{ secrets.TG_USER_ID }}
