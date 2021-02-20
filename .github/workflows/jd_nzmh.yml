@@ -37,10 +37,6 @@ jobs:
           TG_USER_ID: ${{ secrets.TG_USER_ID }}
       - name: '运行 【沃尔玛粉丝互动脚本】'
         run: |
-          curl -O https://raw.githubusercontent.com/i-chenzhe/qx/main/jd_walmart.js > /dev/null 2>&1
-          sed -ri -e "s/let helpAuthor = true/let helpAuthor = false/g"\
-            -e "s/await notify\.sendNotify/console.log/g"\
-            -e "s/\(([\`\"\'])(\\\x47\\\x49\\\x54\\\x48\\\x55\\\x42|GI.HUB)\\1\)/('GxIxTxHxUxB')/g" jd_walmart.js
           node jd_walmart.js
         env:
           JD_COOKIE: ${{ secrets.JD_COOKIE }}
