@@ -28,7 +28,7 @@ jobs:
           npm install
       - name: '运行 【极速版签到+赚现金任务】'
         run: |
-          node jd_speed_redpocke.js
+          node jd_speed_sign.js
         env:
           JD_COOKIE: ${{ secrets.JD_COOKIE }}
           JD_USER_AGENT: ${{ secrets.JD_USER_AGENT }}
