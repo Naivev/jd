@@ -36,3 +36,4 @@ jobs:
           JD_JOY_REWARD_NAME: ${{ secrets.JD_JOY_REWARD_NAME }}
           TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
           TG_USER_ID: ${{ secrets.TG_USER_ID }}
+          JD_USER_AGENT: ${{ secrets.JD_USER_AGENT }}
