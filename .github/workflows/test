@@ -1,10 +1,10 @@
-name: jd_d
+name: test
 on:
   workflow_dispatch:
   schedule:
     - cron: '0 0 * * *'
   repository_dispatch:
-    types: daily_sign
+    types: test
 jobs:
   build:
 
