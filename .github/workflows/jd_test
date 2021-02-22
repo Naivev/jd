@@ -1,4 +1,4 @@
-name: test
+name: jd_test
 on:
   workflow_dispatch:
   schedule:
