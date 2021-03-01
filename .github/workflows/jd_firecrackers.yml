@@ -1,8 +1,8 @@
-name: jd_1
+name: jd_firecrackers
 on:
   workflow_dispatch:
   schedule:
-    - cron: '20 0 * * *'
+    - cron: '40 0 * * *'
 jobs:
   build:
     runs-on: ubuntu-latest
