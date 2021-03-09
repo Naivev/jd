@@ -26,9 +26,11 @@ jobs:
       - name: npm install
         run: |
           npm install
-      - name: '运行 【她的节享京豆脚本】'
+      - name: '运行 【环球挑战赛脚本】'
         run: |
-          node jd_firecrackers.js
+          sed -ri -e "s/const inviteCodes =/& [''];/g"\
+            -e "s/const randomCount =/&3;/g" jd_global.js
+          node jd_global.js
         env:
           JD_COOKIE: ${{ secrets.JD_COOKIE }}
           JD_USER_AGENT: ${{ secrets.JD_USER_AGENT }}
