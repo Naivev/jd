@@ -1,8 +1,8 @@
-name: jd_cash
+name: jd_city
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 2,4 * * *'
+    - cron: '0 3 * * *'
 jobs:
   build:
     runs-on: ubuntu-latest
