@@ -10,8 +10,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         with:
-          repository: Naivev/jx
-          ref: main
+          repository: Tersd07/st1
+          ref: master
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
@@ -26,6 +26,16 @@ jobs:
       - name: npm install
         run: |
           npm install
+      - name: '运行 【joy任务】'
+        run: |
+          node jd_crazy_joy.js
+        env:
+          JD_COOKIE: ${{ secrets.JD_COOKIE }}
+          JD_DEBUG: ${{ secrets.JD_DEBUG }}
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_USER_ID: ${{ secrets.TG_USER_ID }}
+          JDJOY_SHARECODES: ${{ secrets.JDJOY_SHARECODES }}
+          JDJOY_HELPSELF: ${{ secrets.JDJOY_HELPSELF }}
       - name: '运行 【挂机】'
         run: |
           node jd_crazy_joy_coin.js
