@@ -28,7 +28,12 @@ jobs:
           npm install
       - name: '运行 【女装盲盒】'
         run: |
-          node jd_nzmh.js
+          SNAME="jd_nzmh.js"
+          if [ -f $SNAME ]; then
+            node $SNAME
+          else
+            echo -e "\nScript does not exist.\n"
+          fi
         env:
           JD_COOKIE: ${{ secrets.JD_COOKIE }}
           JD_USER_AGENT: ${{ secrets.JD_USER_AGENT }}
