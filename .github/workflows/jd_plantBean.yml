@@ -2,7 +2,7 @@ name: jd_plantBean
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 1-13/2 * * *'
+    - cron: '0 1-13/4 * * *'
 jobs:
   build:
     runs-on: ubuntu-latest
