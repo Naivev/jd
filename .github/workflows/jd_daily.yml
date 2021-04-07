@@ -1,4 +1,5 @@
 name: jd_daily
+
 on:
   workflow_dispatch:
   schedule:
@@ -337,8 +338,8 @@ jobs:
           IGOT_PUSH_KEY: ${{ secrets.IGOT_PUSH_KEY }}
       - name: '运行 【超级摇一摇脚本】'
         run: |
-          SNAME="jd_shake.js"
-          SCODE=$(curl -O -s -w %{http_code} "https://raw.githubusercontent.com/Tersd07/st1/test/icz/$SNAME")
+          SNAME="z_shake.js"
+          SCODE=$(curl -O -s -w %{http_code} "https://raw.githubusercontent.com/Tersd07/st1/dust/i-chenzhe/$SNAME")
           if [ $SCODE = 200 -a -f $SNAME ]; then
             node _mod.js $SNAME
             node $SNAME
@@ -361,8 +362,8 @@ jobs:
           IGOT_PUSH_KEY: ${{ secrets.IGOT_PUSH_KEY }}
       - name: '运行 【百变大咖秀脚本】'
         run: |
-          SNAME="jd_entertainment.js"
-          SCODE=$(curl -O -s -w %{http_code} "https://raw.githubusercontent.com/Tersd07/st1/test/icz/$SNAME")
+          SNAME="z_entertainment.js"
+          SCODE=$(curl -O -s -w %{http_code} "https://raw.githubusercontent.com/Tersd07/st1/dust/i-chenzhe/$SNAME")
           if [ $SCODE = 200 -a -f $SNAME ]; then
             node _mod.js $SNAME
             node $SNAME
@@ -385,13 +386,15 @@ jobs:
           IGOT_PUSH_KEY: ${{ secrets.IGOT_PUSH_KEY }}
       - name: '运行 【粉丝互动脚本】'
         run: |
-          SNAME="jd_fanslove.js"
-          SCODE=$(curl -O -s -w %{http_code} "https://raw.githubusercontent.com/Tersd07/st1/test/icz/$SNAME")
-          if [ $SCODE = 200 -a -f $SNAME ]; then
-            node _mod.js $SNAME
-            node $SNAME
-          else
-            echo -e "\nScript does not exist.\n"
+          if [ $(date -d +8hour -u +%H) -lt 10 ]; then
+            SNAME="z_fanslove.js"
+            SCODE=$(curl -O -s -w %{http_code} "https://raw.githubusercontent.com/Tersd07/st1/dust/i-chenzhe/$SNAME")
+            if [ $SCODE = 200 -a -f $SNAME ]; then
+              node _mod.js $SNAME
+              node $SNAME
+            else
+              echo -e "\nScript does not exist.\n"
+            fi
           fi
         env:
           JD_COOKIE: ${{ secrets.JD_COOKIE }}
@@ -410,7 +413,7 @@ jobs:
       - name: '运行 【母婴跳一跳脚本】'
         run: |
           SNAME="z_mother_jump.js"
-          SCODE=$(curl -O -s -w %{http_code} "https://raw.githubusercontent.com/Tersd07/st1/test/icz/$SNAME")
+          SCODE=$(curl -O -s -w %{http_code} "https://raw.githubusercontent.com/Tersd07/st1/dust/i-chenzhe/$SNAME")
           if [ $SCODE = 200 -a -f $SNAME ]; then
             node _mod.js $SNAME
             node $SNAME
@@ -434,7 +437,7 @@ jobs:
       - name: '运行 【小魔方脚本】'
         run: |
           SNAME="z_xmf.js"
-          SCODE=$(curl -O -s -w %{http_code} "https://raw.githubusercontent.com/Tersd07/st1/test/icz/$SNAME")
+          SCODE=$(curl -O -s -w %{http_code} "https://raw.githubusercontent.com/Tersd07/st1/dust/i-chenzhe/$SNAME")
           if [ $SCODE = 200 -a -f $SNAME ]; then
             node _mod.js $SNAME
             node $SNAME
@@ -458,7 +461,7 @@ jobs:
       - name: '运行 【大转盘脚本】'
         run: |
           SNAME="z_marketLottery.js"
-          SCODE=$(curl -O -s -w %{http_code} "https://raw.githubusercontent.com/Tersd07/st1/test/icz/$SNAME")
+          SCODE=$(curl -O -s -w %{http_code} "https://raw.githubusercontent.com/Tersd07/st1/dust/i-chenzhe/$SNAME")
           if [ $SCODE = 200 -a -f $SNAME ]; then
             node _mod.js $SNAME
             node $SNAME
