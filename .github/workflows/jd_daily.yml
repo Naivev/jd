@@ -32,6 +32,29 @@ jobs:
         run: |
           npm install
           curl -O "https://raw.githubusercontent.com/Tersd07/st1/test/_mod.js" > /dev/null 2>&1
+                - name: '运行 【球队赢好礼脚本】'
+        run: |
+          SNAME="jd_tcl.js"
+          if [[ "${{ secrets._EXCLUDE_RUN }}" =~ "$SNAME" ]]; then
+            echo -e "\n$SNAME has been excluded.\n"
+          elif [ -f $SNAME ]; then
+            node $SNAME
+          else
+            echo -e "\nScript does not exist.\n"
+          fi
+        env:
+          JD_COOKIE: ${{ secrets.JD_COOKIE }}
+          JD_USER_AGENT: ${{ secrets.JD_USER_AGENT }}
+          JD_DEBUG: ${{ secrets.JD_DEBUG }}
+          PUSH_KEY: ${{ secrets.PUSH_KEY }}
+          PUSH_PLUS_USER: ${{ secrets.PUSH_PLUS_USER }}
+          PUSH_PLUS_TOKEN: ${{ secrets.PUSH_PLUS_TOKEN }}
+          QQ_SKEY: ${{ secrets.QQ_SKEY }}
+          QQ_MODE: ${{ secrets.QQ_MODE }}
+          BARK_PUSH: ${{ secrets.BARK_PUSH }}
+          BARK_SOUND: ${{ secrets.BARK_SOUND }}
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_USER_ID: ${{ secrets.TG_USER_ID }}
       - name: '运行 【领京豆5个任务额外奖励脚本】'
         run: |
           SNAME="jd_bean_home.js"
