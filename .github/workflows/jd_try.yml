@@ -1,4 +1,4 @@
-name: jd_try.js
+name: jd_try
 on:
   workflow_dispatch:
   schedule:
@@ -28,7 +28,7 @@ jobs:
           npm install
       - name: '运行 【试用】'
         run: |
-          node jd_try.js.js
+          node jd_try.js
         env:
           JD_COOKIE: ${{ secrets.JD_COOKIE }}
           JD_DEBUG: ${{ secrets.JD_DEBUG }}
