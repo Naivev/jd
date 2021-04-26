@@ -1,8 +1,8 @@
-name: jd_daily_egg
+name: jd_try.js
 on:
   workflow_dispatch:
   schedule:
-    - cron: '15 */3 * * *'
+    - cron: '15 3 * * *'
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -26,9 +26,9 @@ jobs:
       - name: npm install
         run: |
           npm install
-      - name: '运行 【天天提鹅】'
+      - name: '运行 【试用】'
         run: |
-          node jd_daily_egg.js
+          node jd_try.js.js
         env:
           JD_COOKIE: ${{ secrets.JD_COOKIE }}
           JD_DEBUG: ${{ secrets.JD_DEBUG }}
