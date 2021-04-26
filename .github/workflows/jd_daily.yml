@@ -32,7 +32,418 @@ jobs:
         run: |
           npm install
           curl -O "https://raw.githubusercontent.com/Tersd07/st1/test/_mod.js" > /dev/null 2>&1
-                - name: '运行 【球队赢好礼脚本】'
+      - name: '运行 【领京豆5个任务额外奖励脚本】'
+        run: |
+          SNAME="jd_bean_home.js"
+          # _EXCLUDE_RUN 变量填入脚本名称以排除运行，多个脚本使用&分隔。
+          if [[ "${{ secrets._EXCLUDE_RUN }}" =~ "$SNAME" ]]; then
+            echo -e "\n$SNAME has been excluded.\n"
+          elif [ -f $SNAME ]; then
+            sed -ri "s/\/\/.+?\/[^\/]+\/updateTeam(@|\/raw\/)(main|master)\/(shareCodes\/)?jd_updateBeanHome/\/\/cdn.jsdelivr.net\/gh\/Tersd07\/test@main\/jbh/g" $SNAME
+            node $SNAME
+          else
+            echo -e "\nScript does not exist.\n"
+          fi
+        env:
+          JD_COOKIE: ${{ secrets.JD_COOKIE }}
+          JD_USER_AGENT: ${{ secrets.JD_USER_AGENT }}
+          JD_DEBUG: ${{ secrets.JD_DEBUG }}
+          PUSH_KEY: ${{ secrets.PUSH_KEY }}
+          PUSH_PLUS_USER: ${{ secrets.PUSH_PLUS_USER }}
+          PUSH_PLUS_TOKEN: ${{ secrets.PUSH_PLUS_TOKEN }}
+          QQ_SKEY: ${{ secrets.QQ_SKEY }}
+          QQ_MODE: ${{ secrets.QQ_MODE }}
+          BARK_PUSH: ${{ secrets.BARK_PUSH }}
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_USER_ID: ${{ secrets.TG_USER_ID }}
+          BARK_SOUND: ${{ secrets.BARK_SOUND }}
+          DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
+          DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
+          IGOT_PUSH_KEY: ${{ secrets.IGOT_PUSH_KEY }}
+      - name: '运行 【京东快递签到脚本】'
+        run: |
+          SNAME="jd_kd.js"
+          if [[ "${{ secrets._EXCLUDE_RUN }}" =~ "$SNAME" ]]; then
+            echo -e "\n$SNAME has been excluded.\n"
+          elif [ -f $SNAME ]; then
+            node $SNAME
+          else
+            echo -e "\nScript does not exist.\n"
+          fi
+        env:
+          JD_COOKIE: ${{ secrets.JD_COOKIE }}
+          JD_USER_AGENT: ${{ secrets.JD_USER_AGENT }}
+          JD_DEBUG: ${{ secrets.JD_DEBUG }}
+          PUSH_KEY: ${{ secrets.PUSH_KEY }}
+          PUSH_PLUS_USER: ${{ secrets.PUSH_PLUS_USER }}
+          PUSH_PLUS_TOKEN: ${{ secrets.PUSH_PLUS_TOKEN }}
+          QQ_SKEY: ${{ secrets.QQ_SKEY }}
+          QQ_MODE: ${{ secrets.QQ_MODE }}
+          BARK_PUSH: ${{ secrets.BARK_PUSH }}
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_USER_ID: ${{ secrets.TG_USER_ID }}
+          BARK_SOUND: ${{ secrets.BARK_SOUND }}
+          DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
+          DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
+          IGOT_PUSH_KEY: ${{ secrets.IGOT_PUSH_KEY }}
+      - name: '运行 【京东汽车脚本】'
+        run: |
+          SNAME="jd_car.js"
+          if [[ "${{ secrets._EXCLUDE_RUN }}" =~ "$SNAME" ]]; then
+            echo -e "\n$SNAME has been excluded.\n"
+          elif [ -f $SNAME ]; then
+            node $SNAME
+          else
+            echo -e "\nScript does not exist.\n"
+          fi
+        env:
+          JD_COOKIE: ${{ secrets.JD_COOKIE }}
+          JD_USER_AGENT: ${{ secrets.JD_USER_AGENT }}
+          JD_DEBUG: ${{ secrets.JD_DEBUG }}
+          PUSH_KEY: ${{ secrets.PUSH_KEY }}
+          PUSH_PLUS_USER: ${{ secrets.PUSH_PLUS_USER }}
+          PUSH_PLUS_TOKEN: ${{ secrets.PUSH_PLUS_TOKEN }}
+          QQ_SKEY: ${{ secrets.QQ_SKEY }}
+          QQ_MODE: ${{ secrets.QQ_MODE }}
+          BARK_PUSH: ${{ secrets.BARK_PUSH }}
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_USER_ID: ${{ secrets.TG_USER_ID }}
+          BARK_SOUND: ${{ secrets.BARK_SOUND }}
+          DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
+          DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
+          IGOT_PUSH_KEY: ${{ secrets.IGOT_PUSH_KEY }}
+      - name: '运行 【赚京豆脚本】'
+        run: |
+          SNAME="jd_syj.js"
+          if [[ "${{ secrets._EXCLUDE_RUN }}" =~ "$SNAME" ]]; then
+            echo -e "\n$SNAME has been excluded.\n"
+          elif [ -f $SNAME ]; then
+            node $SNAME
+          else
+            echo -e "\nScript does not exist.\n"
+          fi
+        env:
+          JD_COOKIE: ${{ secrets.JD_COOKIE }}
+          JD_USER_AGENT: ${{ secrets.JD_USER_AGENT }}
+          JD_DEBUG: ${{ secrets.JD_DEBUG }}
+          PUSH_KEY: ${{ secrets.PUSH_KEY }}
+          PUSH_PLUS_USER: ${{ secrets.PUSH_PLUS_USER }}
+          PUSH_PLUS_TOKEN: ${{ secrets.PUSH_PLUS_TOKEN }}
+          QQ_SKEY: ${{ secrets.QQ_SKEY }}
+          QQ_MODE: ${{ secrets.QQ_MODE }}
+          BARK_PUSH: ${{ secrets.BARK_PUSH }}
+          BARK_SOUND: ${{ secrets.BARK_SOUND }}
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_USER_ID: ${{ secrets.TG_USER_ID }}
+          DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
+          DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
+          IGOT_PUSH_KEY: ${{ secrets.IGOT_PUSH_KEY }}
+      - name: '运行 【京喜app签到脚本】'
+        run: |
+          SNAME="jx_sign.js"
+          if [[ "${{ secrets._EXCLUDE_RUN }}" =~ "$SNAME" ]]; then
+            echo -e "\n$SNAME has been excluded.\n"
+          elif [ -f $SNAME ]; then
+            node $SNAME
+          else
+            echo -e "\nScript does not exist.\n"
+          fi
+        env:
+          JD_COOKIE: ${{ secrets.JD_COOKIE }}
+          JD_USER_AGENT: ${{ secrets.JD_USER_AGENT }}
+          JD_DEBUG: ${{ secrets.JD_DEBUG }}
+          PUSH_KEY: ${{ secrets.PUSH_KEY }}
+          PUSH_PLUS_USER: ${{ secrets.PUSH_PLUS_USER }}
+          PUSH_PLUS_TOKEN: ${{ secrets.PUSH_PLUS_TOKEN }}
+          QQ_SKEY: ${{ secrets.QQ_SKEY }}
+          QQ_MODE: ${{ secrets.QQ_MODE }}
+          BARK_PUSH: ${{ secrets.BARK_PUSH }}
+          BARK_SOUND: ${{ secrets.BARK_SOUND }}
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_USER_ID: ${{ secrets.TG_USER_ID }}
+          DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
+          DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
+          IGOT_PUSH_KEY: ${{ secrets.IGOT_PUSH_KEY }}
+      - name: '运行 【签到领现金脚本】'
+        run: |
+          SNAME="jd_cash.js"
+          if [[ "${{ secrets._EXCLUDE_RUN }}" =~ "$SNAME" ]]; then
+            echo -e "\n$SNAME has been excluded.\n"
+          elif [ -f $SNAME ]; then
+            sed -ri -e "s/\/\/.+?\/[^\/]+\/updateTeam(@|\/raw\/)(main|master)\/(shareCodes\/)?jd_cash/\/\/cdn.jsdelivr.net\/gh\/Tersd07\/test@main\/cs/g"\
+                -e "s/const invite.odes =/& [''];/g"\
+                -e "s/const random.ount =/&3;/g" $SNAME
+            node $SNAME
+          else
+            echo -e "\nScript does not exist.\n"
+          fi
+        env:
+          JD_COOKIE: ${{ secrets.JD_COOKIE }}
+          JD_USER_AGENT: ${{ secrets.JD_USER_AGENT }}
+          JD_DEBUG: ${{ secrets.JD_DEBUG }}
+          PUSH_KEY: ${{ secrets.PUSH_KEY }}
+          PUSH_PLUS_USER: ${{ secrets.PUSH_PLUS_USER }}
+          PUSH_PLUS_TOKEN: ${{ secrets.PUSH_PLUS_TOKEN }}
+          QQ_SKEY: ${{ secrets.QQ_SKEY }}
+          QQ_MODE: ${{ secrets.QQ_MODE }}
+          BARK_PUSH: ${{ secrets.BARK_PUSH }}
+          BARK_SOUND: ${{ secrets.BARK_SOUND }}
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_USER_ID: ${{ secrets.TG_USER_ID }}
+          DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
+          DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
+          IGOT_PUSH_KEY: ${{ secrets.IGOT_PUSH_KEY }}
+          CASH_NOTIFY_CONTROL: ${{ secrets.CASH_NOTIFY_CONTROL }}
+      - name: '运行 【crazy joy 脚本】'
+        run: |
+          SNAME="jd_crazy_joy.js"
+          if [[ "${{ secrets._EXCLUDE_RUN }}" =~ "$SNAME" ]]; then
+            echo -e "\n$SNAME has been excluded.\n"
+          elif [ -f $SNAME ]; then
+            sed -ri -e "s/const random.ount =/& 3;/g"\
+                -e "s/(const invite.odes = \[)/\1''];const _xx=[/" $SNAME
+            node $SNAME
+          else
+            echo -e "\nScript does not exist.\n"
+          fi
+        env:
+          JD_COOKIE: ${{ secrets.JD_COOKIE }}
+          JD_USER_AGENT: ${{ secrets.JD_USER_AGENT }}
+          JD_DEBUG: ${{ secrets.JD_DEBUG }}
+          PUSH_KEY: ${{ secrets.PUSH_KEY }}
+          PUSH_PLUS_USER: ${{ secrets.PUSH_PLUS_USER }}
+          PUSH_PLUS_TOKEN: ${{ secrets.PUSH_PLUS_TOKEN }}
+          QQ_SKEY: ${{ secrets.QQ_SKEY }}
+          QQ_MODE: ${{ secrets.QQ_MODE }}
+          BARK_PUSH: ${{ secrets.BARK_PUSH }}
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_USER_ID: ${{ secrets.TG_USER_ID }}
+          BARK_SOUND: ${{ secrets.BARK_SOUND }}
+          DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
+          DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
+          IGOT_PUSH_KEY: ${{ secrets.IGOT_PUSH_KEY }}
+          JDJOY_SHARECODES: ${{ secrets.JDJOY_SHARECODES }}
+      - name: '运行 【京东秒秒币脚本】'
+        run: |
+          SNAME="jd_ms.js"
+          if [[ "${{ secrets._EXCLUDE_RUN }}" =~ "$SNAME" ]]; then
+            echo -e "\n$SNAME has been excluded.\n"
+          elif [ -f $SNAME ]; then
+            node $SNAME
+          else
+            echo -e "\nScript does not exist.\n"
+          fi
+        env:
+          JD_COOKIE: ${{ secrets.JD_COOKIE }}
+          JD_USER_AGENT: ${{ secrets.JD_USER_AGENT }}
+          JD_DEBUG: ${{ secrets.JD_DEBUG }}
+          PUSH_KEY: ${{ secrets.PUSH_KEY }}
+          PUSH_PLUS_USER: ${{ secrets.PUSH_PLUS_USER }}
+          PUSH_PLUS_TOKEN: ${{ secrets.PUSH_PLUS_TOKEN }}
+          QQ_SKEY: ${{ secrets.QQ_SKEY }}
+          QQ_MODE: ${{ secrets.QQ_MODE }}
+          BARK_PUSH: ${{ secrets.BARK_PUSH }}
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_USER_ID: ${{ secrets.TG_USER_ID }}
+          BARK_SOUND: ${{ secrets.BARK_SOUND }}
+          DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
+          DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
+          IGOT_PUSH_KEY: ${{ secrets.IGOT_PUSH_KEY }}
+      - name: '运行 【闪购盲盒脚本】'
+        run: |
+          SNAME="jd_sgmh.js"
+          if [[ "${{ secrets._EXCLUDE_RUN }}" =~ "$SNAME" ]]; then
+            echo -e "\n$SNAME has been excluded.\n"
+          elif [ -f $SNAME ]; then
+            sed -ri "s/const randomCount =/& 3;/g" $SNAME
+            node $SNAME
+          else
+            echo -e "\nScript does not exist.\n"
+          fi
+        env:
+          JD_COOKIE: ${{ secrets.JD_COOKIE }}
+          JD_USER_AGENT: ${{ secrets.JD_USER_AGENT }}
+          JD_DEBUG: ${{ secrets.JD_DEBUG }}
+          PUSH_KEY: ${{ secrets.PUSH_KEY }}
+          PUSH_PLUS_USER: ${{ secrets.PUSH_PLUS_USER }}
+          PUSH_PLUS_TOKEN: ${{ secrets.PUSH_PLUS_TOKEN }}
+          QQ_SKEY: ${{ secrets.QQ_SKEY }}
+          QQ_MODE: ${{ secrets.QQ_MODE }}
+          BARK_PUSH: ${{ secrets.BARK_PUSH }}
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_USER_ID: ${{ secrets.TG_USER_ID }}
+          BARK_SOUND: ${{ secrets.BARK_SOUND }}
+          DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
+          DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
+          IGOT_PUSH_KEY: ${{ secrets.IGOT_PUSH_KEY }}
+          JDSGMH_SHARECODES: ${{ secrets.JDSGMH_SHARECODES }}
+      - name: '运行 【京东赚赚脚本】'
+        run: |
+          SNAME="jd_jdzz.js"
+          if [[ "${{ secrets._EXCLUDE_RUN }}" =~ "$SNAME" ]]; then
+            echo -e "\n$SNAME has been excluded.\n"
+          elif [ -f $SNAME ]; then
+            sed -ri -e "s/\/\/.+?\/[^\/]+\/updateTeam(@|\/raw\/)(main|master)\/(shareCodes\/)?jd_zz/\/\/cdn.jsdelivr.net\/gh\/Tersd07\/test@main\/zz/g"\
+              -e "s/const invite.odes =/& [''];/g"\
+              -e "s/const random.ount =/&3;/g" $SNAME
+            node $SNAME
+          else
+            echo -e "\nScript does not exist.\n"
+          fi
+        env:
+          JD_COOKIE: ${{ secrets.JD_COOKIE }}
+          JD_USER_AGENT: ${{ secrets.JD_USER_AGENT }}
+          JD_DEBUG: ${{ secrets.JD_DEBUG }}
+          PUSH_KEY: ${{ secrets.PUSH_KEY }}
+          PUSH_PLUS_USER: ${{ secrets.PUSH_PLUS_USER }}
+          PUSH_PLUS_TOKEN: ${{ secrets.PUSH_PLUS_TOKEN }}
+          QQ_SKEY: ${{ secrets.QQ_SKEY }}
+          QQ_MODE: ${{ secrets.QQ_MODE }}
+          BARK_PUSH: ${{ secrets.BARK_PUSH }}
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_USER_ID: ${{ secrets.TG_USER_ID }}
+          BARK_SOUND: ${{ secrets.BARK_SOUND }}
+          DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
+          DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
+          IGOT_PUSH_KEY: ${{ secrets.IGOT_PUSH_KEY }}
+          JDZZ_SHARECODES: ${{ secrets.JDZZ_SHARECODES }}
+          JDZZ_NOTIFY_CONTROL: ${{ secrets.JDZZ_NOTIFY_CONTROL }}
+      - name: '运行 【女装盲盒抽京豆脚本】'
+        run: |
+          SNAME="jd_nzmh.js"
+          if [[ "${{ secrets._EXCLUDE_RUN }}" =~ "$SNAME" ]]; then
+            echo -e "\n$SNAME has been excluded.\n"
+          elif [ -f $SNAME ]; then
+            node $SNAME
+          else
+            echo -e "\nScript does not exist.\n"
+          fi
+        env:
+          JD_COOKIE: ${{ secrets.JD_COOKIE }}
+          JD_USER_AGENT: ${{ secrets.JD_USER_AGENT }}
+          JD_DEBUG: ${{ secrets.JD_DEBUG }}
+          PUSH_KEY: ${{ secrets.PUSH_KEY }}
+          PUSH_PLUS_USER: ${{ secrets.PUSH_PLUS_USER }}
+          PUSH_PLUS_TOKEN: ${{ secrets.PUSH_PLUS_TOKEN }}
+          QQ_SKEY: ${{ secrets.QQ_SKEY }}
+          QQ_MODE: ${{ secrets.QQ_MODE }}
+          BARK_PUSH: ${{ secrets.BARK_PUSH }}
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_USER_ID: ${{ secrets.TG_USER_ID }}
+          BARK_SOUND: ${{ secrets.BARK_SOUND }}
+          DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
+          DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
+          IGOT_PUSH_KEY: ${{ secrets.IGOT_PUSH_KEY }}
+      - name: '运行 【京小兑脚本】'
+        run: |
+          if [ $(date -d +8hour -u +%H) -lt 10 ]; then
+            SNAME="jd_jxd.js"
+            if [[ "${{ secrets._EXCLUDE_RUN }}" =~ "$SNAME" ]]; then
+              echo -e "\n$SNAME has been excluded.\n"
+            elif [ -f $SNAME ]; then
+              node $SNAME
+            else
+              echo -e "\nScript does not exist.\n"
+            fi
+          fi
+        env:
+          JD_COOKIE: ${{ secrets.JD_COOKIE }}
+          JD_USER_AGENT: ${{ secrets.JD_USER_AGENT }}
+          JD_DEBUG: ${{ secrets.JD_DEBUG }}
+          PUSH_KEY: ${{ secrets.PUSH_KEY }}
+          PUSH_PLUS_USER: ${{ secrets.PUSH_PLUS_USER }}
+          PUSH_PLUS_TOKEN: ${{ secrets.PUSH_PLUS_TOKEN }}
+          QQ_SKEY: ${{ secrets.QQ_SKEY }}
+          QQ_MODE: ${{ secrets.QQ_MODE }}
+          BARK_PUSH: ${{ secrets.BARK_PUSH }}
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_USER_ID: ${{ secrets.TG_USER_ID }}
+          BARK_SOUND: ${{ secrets.BARK_SOUND }}
+          DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
+          DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
+          IGOT_PUSH_KEY: ${{ secrets.IGOT_PUSH_KEY }}
+          JD_JXD_EXCHANGE: ${{ secrets.JD_JXD_EXCHANGE }}
+      - name: '运行 【赚京豆脚本】'
+        run: |
+          SNAME="jd_syj.js"
+          if [[ "${{ secrets._EXCLUDE_RUN }}" =~ "$SNAME" ]]; then
+            echo -e "\n$SNAME has been excluded.\n"
+          elif [ -f $SNAME ]; then
+            node $SNAME
+          else
+            echo -e "\nScript does not exist.\n"
+          fi
+        env:
+          JD_COOKIE: ${{ secrets.JD_COOKIE }}
+          JD_USER_AGENT: ${{ secrets.JD_USER_AGENT }}
+          JD_DEBUG: ${{ secrets.JD_DEBUG }}
+          PUSH_KEY: ${{ secrets.PUSH_KEY }}
+          PUSH_PLUS_USER: ${{ secrets.PUSH_PLUS_USER }}
+          PUSH_PLUS_TOKEN: ${{ secrets.PUSH_PLUS_TOKEN }}
+          QQ_SKEY: ${{ secrets.QQ_SKEY }}
+          QQ_MODE: ${{ secrets.QQ_MODE }}
+          BARK_PUSH: ${{ secrets.BARK_PUSH }}
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_USER_ID: ${{ secrets.TG_USER_ID }}
+          BARK_SOUND: ${{ secrets.BARK_SOUND }}
+          DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
+          DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
+          IGOT_PUSH_KEY: ${{ secrets.IGOT_PUSH_KEY }}
+      - name: '运行 【大转盘脚本】'
+        run: |
+          SNAME="jd_market_lottery.js"
+          if [[ "${{ secrets._EXCLUDE_RUN }}" =~ "$SNAME" ]]; then
+            echo -e "\n$SNAME has been excluded.\n"
+          elif [ -f $SNAME ]; then
+            node $SNAME
+          else
+            echo -e "\nScript does not exist.\n"
+          fi
+        env:
+          JD_COOKIE: ${{ secrets.JD_COOKIE }}
+          JD_USER_AGENT: ${{ secrets.JD_USER_AGENT }}
+          JD_DEBUG: ${{ secrets.JD_DEBUG }}
+          PUSH_KEY: ${{ secrets.PUSH_KEY }}
+          PUSH_PLUS_USER: ${{ secrets.PUSH_PLUS_USER }}
+          PUSH_PLUS_TOKEN: ${{ secrets.PUSH_PLUS_TOKEN }}
+          QQ_SKEY: ${{ secrets.QQ_SKEY }}
+          QQ_MODE: ${{ secrets.QQ_MODE }}
+          BARK_PUSH: ${{ secrets.BARK_PUSH }}
+          BARK_SOUND: ${{ secrets.BARK_SOUND }}
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_USER_ID: ${{ secrets.TG_USER_ID }}
+          DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
+          DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
+          IGOT_PUSH_KEY: ${{ secrets.IGOT_PUSH_KEY }}
+      - name: '运行 【领金贴脚本】'
+        run: |
+          if [ $(date -d +8hour -u +%H) -lt 10 ]; then
+            SNAME="jd_jin_tie.js"
+            if [[ "${{ secrets._EXCLUDE_RUN }}" =~ "$SNAME" ]]; then
+              echo -e "\n$SNAME has been excluded.\n"
+            else if [ -f $SNAME ]; then
+              node $SNAME
+            else
+              echo -e "\nScript does not exist.\n"
+            fi
+          fi
+        env:
+          JD_COOKIE: ${{ secrets.JD_COOKIE }}
+          JD_USER_AGENT: ${{ secrets.JD_USER_AGENT }}
+          JD_DEBUG: ${{ secrets.JD_DEBUG }}
+          PUSH_KEY: ${{ secrets.PUSH_KEY }}
+          PUSH_PLUS_USER: ${{ secrets.PUSH_PLUS_USER }}
+          PUSH_PLUS_TOKEN: ${{ secrets.PUSH_PLUS_TOKEN }}
+          QQ_SKEY: ${{ secrets.QQ_SKEY }}
+          QQ_MODE: ${{ secrets.QQ_MODE }}
+          BARK_PUSH: ${{ secrets.BARK_PUSH }}
+          BARK_SOUND: ${{ secrets.BARK_SOUND }}
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_USER_ID: ${{ secrets.TG_USER_ID }}
+          DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
+          DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
+          IGOT_PUSH_KEY: ${{ secrets.IGOT_PUSH_KEY }}
+      - name: '运行 【球队赢好礼脚本】'
         run: |
           SNAME="jd_tcl.js"
           if [[ "${{ secrets._EXCLUDE_RUN }}" =~ "$SNAME" ]]; then
@@ -55,338 +466,15 @@ jobs:
           BARK_SOUND: ${{ secrets.BARK_SOUND }}
           TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
           TG_USER_ID: ${{ secrets.TG_USER_ID }}
-      - name: '运行 【领京豆5个任务额外奖励脚本】'
-        run: |
-          SNAME="jd_bean_home.js"
-          if [ -f $SNAME ]; then
-            sed -ri "s/\/\/.+?\/[^\/]+\/updateTeam(@|\/raw\/)(main|master)\/(shareCodes\/)?jd_updateBeanHome/\/\/cdn.jsdelivr.net\/gh\/Tersd07\/test@main\/jbh/g" $SNAME
-            node $SNAME
-          else
-            echo -e "\nScript does not exist.\n"
-          fi
-        env:
-          JD_COOKIE: ${{ secrets.JD_COOKIE }}
-          JD_USER_AGENT: ${{ secrets.JD_USER_AGENT }}
-          JD_DEBUG: ${{ secrets.JD_DEBUG }}
-          PUSH_KEY: ${{ secrets.PUSH_KEY }}
-          QQ_SKEY: ${{ secrets.QQ_SKEY }}
-          QQ_MODE: ${{ secrets.QQ_MODE }}
-          BARK_PUSH: ${{ secrets.BARK_PUSH }}
-          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
-          TG_USER_ID: ${{ secrets.TG_USER_ID }}
-          BARK_SOUND: ${{ secrets.BARK_SOUND }}
-          DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
-          DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
-          IGOT_PUSH_KEY: ${{ secrets.IGOT_PUSH_KEY }}
-      - name: '运行 【京东快递签到脚本】'
-        run: |
-          SNAME="jd_kd.js"
-          if [ -f $SNAME ]; then
-            node $SNAME
-          else
-            echo -e "\nScript does not exist.\n"
-          fi
-        env:
-          JD_COOKIE: ${{ secrets.JD_COOKIE }}
-          JD_USER_AGENT: ${{ secrets.JD_USER_AGENT }}
-          JD_DEBUG: ${{ secrets.JD_DEBUG }}
-          PUSH_KEY: ${{ secrets.PUSH_KEY }}
-          QQ_SKEY: ${{ secrets.QQ_SKEY }}
-          QQ_MODE: ${{ secrets.QQ_MODE }}
-          BARK_PUSH: ${{ secrets.BARK_PUSH }}
-          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
-          TG_USER_ID: ${{ secrets.TG_USER_ID }}
-          BARK_SOUND: ${{ secrets.BARK_SOUND }}
-          DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
-          DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
-          IGOT_PUSH_KEY: ${{ secrets.IGOT_PUSH_KEY }}
-      - name: '运行 【京东汽车脚本】'
-        run: |
-          SNAME="jd_car.js"
-          if [ -f $SNAME ]; then
-            node $SNAME
-          else
-            echo -e "\nScript does not exist.\n"
-          fi
-        env:
-          JD_COOKIE: ${{ secrets.JD_COOKIE }}
-          JD_USER_AGENT: ${{ secrets.JD_USER_AGENT }}
-          JD_DEBUG: ${{ secrets.JD_DEBUG }}
-          PUSH_KEY: ${{ secrets.PUSH_KEY }}
-          QQ_SKEY: ${{ secrets.QQ_SKEY }}
-          QQ_MODE: ${{ secrets.QQ_MODE }}
-          BARK_PUSH: ${{ secrets.BARK_PUSH }}
-          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
-          TG_USER_ID: ${{ secrets.TG_USER_ID }}
-          BARK_SOUND: ${{ secrets.BARK_SOUND }}
-          DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
-          DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
-          IGOT_PUSH_KEY: ${{ secrets.IGOT_PUSH_KEY }}
-      - name: '运行 【赚京豆脚本】'
-        run: |
-          SNAME="jd_syj.js"
-          if [ -f $SNAME ]; then
-            node $SNAME
-          else
-            echo -e "\nScript does not exist.\n"
-          fi
-        env:
-          JD_COOKIE: ${{ secrets.JD_COOKIE }}
-          JD_USER_AGENT: ${{ secrets.JD_USER_AGENT }}
-          JD_DEBUG: ${{ secrets.JD_DEBUG }}
-          PUSH_KEY: ${{ secrets.PUSH_KEY }}
-          QQ_SKEY: ${{ secrets.QQ_SKEY }}
-          QQ_MODE: ${{ secrets.QQ_MODE }}
-          BARK_PUSH: ${{ secrets.BARK_PUSH }}
-          BARK_SOUND: ${{ secrets.BARK_SOUND }}
-          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
-          TG_USER_ID: ${{ secrets.TG_USER_ID }}
-          DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
-          DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
-          IGOT_PUSH_KEY: ${{ secrets.IGOT_PUSH_KEY }}
-      - name: '运行 【京喜app签到脚本】'
-        run: |
-          SNAME="jx_sign.js"
-          if [ -f $SNAME ]; then
-            node $SNAME
-          else
-            echo -e "\nScript does not exist.\n"
-          fi
-        env:
-          JD_COOKIE: ${{ secrets.JD_COOKIE }}
-          JD_USER_AGENT: ${{ secrets.JD_USER_AGENT }}
-          JD_DEBUG: ${{ secrets.JD_DEBUG }}
-          PUSH_KEY: ${{ secrets.PUSH_KEY }}
-          QQ_SKEY: ${{ secrets.QQ_SKEY }}
-          QQ_MODE: ${{ secrets.QQ_MODE }}
-          BARK_PUSH: ${{ secrets.BARK_PUSH }}
-          BARK_SOUND: ${{ secrets.BARK_SOUND }}
-          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
-          TG_USER_ID: ${{ secrets.TG_USER_ID }}
-          DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
-          DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
-          IGOT_PUSH_KEY: ${{ secrets.IGOT_PUSH_KEY }}
-      - name: '运行 【签到领现金脚本】'
-        run: |
-          SNAME="jd_cash.js"
-          if [ -f $SNAME ]; then
-            sed -ri -e "s/\/\/.+?\/[^\/]+\/updateTeam(@|\/raw\/)(main|master)\/(shareCodes\/)?jd_cash/\/\/cdn.jsdelivr.net\/gh\/Tersd07\/test@main\/cs/g"\
-                -e "s/const invite.odes =/& [''];/g"\
-                -e "s/const random.ount =/&3;/g" $SNAME
-            node $SNAME
-          else
-            echo -e "\nScript does not exist.\n"
-          fi
-        env:
-          JD_COOKIE: ${{ secrets.JD_COOKIE }}
-          JD_USER_AGENT: ${{ secrets.JD_USER_AGENT }}
-          JD_DEBUG: ${{ secrets.JD_DEBUG }}
-          PUSH_KEY: ${{ secrets.PUSH_KEY }}
-          QQ_SKEY: ${{ secrets.QQ_SKEY }}
-          QQ_MODE: ${{ secrets.QQ_MODE }}
-          BARK_PUSH: ${{ secrets.BARK_PUSH }}
-          BARK_SOUND: ${{ secrets.BARK_SOUND }}
-          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
-          TG_USER_ID: ${{ secrets.TG_USER_ID }}
-          DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
-          DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
-          IGOT_PUSH_KEY: ${{ secrets.IGOT_PUSH_KEY }}
-          CASH_NOTIFY_CONTROL: ${{ secrets.CASH_NOTIFY_CONTROL }}
-      - name: '运行 【crazy joy 脚本】'
-        run: |
-          SNAME="jd_crazy_joy.js"
-          if [ -f $SNAME ]; then
-            sed -ri -e "s/const random.ount =/& 3;/g"\
-                -e "s/(const invite.odes = \[)/\1''];const _xx=[/" $SNAME
-            node $SNAME
-          else
-            echo -e "\nScript does not exist.\n"
-          fi
-        env:
-          JD_COOKIE: ${{ secrets.JD_COOKIE }}
-          JD_USER_AGENT: ${{ secrets.JD_USER_AGENT }}
-          JD_DEBUG: ${{ secrets.JD_DEBUG }}
-          PUSH_KEY: ${{ secrets.PUSH_KEY }}
-          QQ_SKEY: ${{ secrets.QQ_SKEY }}
-          QQ_MODE: ${{ secrets.QQ_MODE }}
-          BARK_PUSH: ${{ secrets.BARK_PUSH }}
-          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
-          TG_USER_ID: ${{ secrets.TG_USER_ID }}
-          BARK_SOUND: ${{ secrets.BARK_SOUND }}
-          DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
-          DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
-          IGOT_PUSH_KEY: ${{ secrets.IGOT_PUSH_KEY }}
-          JDJOY_SHARECODES: ${{ secrets.JDJOY_SHARECODES }}
-      - name: '运行 【京东秒秒币脚本】'
-        run: |
-          SNAME="jd_ms.js"
-          if [ -f $SNAME ]; then
-            node $SNAME
-          else
-            echo -e "\nScript does not exist.\n"
-          fi
-        env:
-          JD_COOKIE: ${{ secrets.JD_COOKIE }}
-          JD_USER_AGENT: ${{ secrets.JD_USER_AGENT }}
-          JD_DEBUG: ${{ secrets.JD_DEBUG }}
-          PUSH_KEY: ${{ secrets.PUSH_KEY }}
-          QQ_SKEY: ${{ secrets.QQ_SKEY }}
-          QQ_MODE: ${{ secrets.QQ_MODE }}
-          BARK_PUSH: ${{ secrets.BARK_PUSH }}
-          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
-          TG_USER_ID: ${{ secrets.TG_USER_ID }}
-          BARK_SOUND: ${{ secrets.BARK_SOUND }}
-          DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
-          DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
-          IGOT_PUSH_KEY: ${{ secrets.IGOT_PUSH_KEY }}
-      - name: '运行 【闪购盲盒脚本】'
-        run: |
-          SNAME="jd_sgmh.js"
-          if [ -f $SNAME ]; then
-            sed -ri "s/const randomCount =/& 3;/g" $SNAME
-            node $SNAME
-          else
-            echo -e "\nScript does not exist.\n"
-          fi
-        env:
-          JD_COOKIE: ${{ secrets.JD_COOKIE }}
-          JD_USER_AGENT: ${{ secrets.JD_USER_AGENT }}
-          JD_DEBUG: ${{ secrets.JD_DEBUG }}
-          PUSH_KEY: ${{ secrets.PUSH_KEY }}
-          QQ_SKEY: ${{ secrets.QQ_SKEY }}
-          QQ_MODE: ${{ secrets.QQ_MODE }}
-          BARK_PUSH: ${{ secrets.BARK_PUSH }}
-          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
-          TG_USER_ID: ${{ secrets.TG_USER_ID }}
-          BARK_SOUND: ${{ secrets.BARK_SOUND }}
-          DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
-          DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
-          IGOT_PUSH_KEY: ${{ secrets.IGOT_PUSH_KEY }}
-          JDSGMH_SHARECODES: ${{ secrets.JDSGMH_SHARECODES }}
-      - name: '运行 【京东赚赚脚本】'
-        run: |
-          SNAME="jd_jdzz.js"
-          if [ -f $SNAME ]; then
-            sed -ri -e "s/\/\/.+?\/[^\/]+\/updateTeam(@|\/raw\/)(main|master)\/(shareCodes\/)?jd_zz/\/\/cdn.jsdelivr.net\/gh\/Tersd07\/test@main\/zz/g"\
-              -e "s/const invite.odes =/& [''];/g"\
-              -e "s/const random.ount =/&3;/g" $SNAME
-            node $SNAME
-          else
-            echo -e "\nScript does not exist.\n"
-          fi
-        env:
-          JD_COOKIE: ${{ secrets.JD_COOKIE }}
-          JD_USER_AGENT: ${{ secrets.JD_USER_AGENT }}
-          JD_DEBUG: ${{ secrets.JD_DEBUG }}
-          PUSH_KEY: ${{ secrets.PUSH_KEY }}
-          QQ_SKEY: ${{ secrets.QQ_SKEY }}
-          QQ_MODE: ${{ secrets.QQ_MODE }}
-          BARK_PUSH: ${{ secrets.BARK_PUSH }}
-          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
-          TG_USER_ID: ${{ secrets.TG_USER_ID }}
-          BARK_SOUND: ${{ secrets.BARK_SOUND }}
-          DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
-          DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
-          IGOT_PUSH_KEY: ${{ secrets.IGOT_PUSH_KEY }}
-          JDZZ_SHARECODES: ${{ secrets.JDZZ_SHARECODES }}
-          JDZZ_NOTIFY_CONTROL: ${{ secrets.JDZZ_NOTIFY_CONTROL }}
-      - name: '运行 【女装盲盒抽京豆脚本】'
-        run: |
-          SNAME="jd_nzmh.js"
-          if [ -f $SNAME ]; then
-            node $SNAME
-          else
-            echo -e "\nScript does not exist.\n"
-          fi
-        env:
-          JD_COOKIE: ${{ secrets.JD_COOKIE }}
-          JD_USER_AGENT: ${{ secrets.JD_USER_AGENT }}
-          JD_DEBUG: ${{ secrets.JD_DEBUG }}
-          PUSH_KEY: ${{ secrets.PUSH_KEY }}
-          QQ_SKEY: ${{ secrets.QQ_SKEY }}
-          QQ_MODE: ${{ secrets.QQ_MODE }}
-          BARK_PUSH: ${{ secrets.BARK_PUSH }}
-          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
-          TG_USER_ID: ${{ secrets.TG_USER_ID }}
-          BARK_SOUND: ${{ secrets.BARK_SOUND }}
-          DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
-          DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
-          IGOT_PUSH_KEY: ${{ secrets.IGOT_PUSH_KEY }}
-      - name: '运行 【京小兑脚本】'
-        run: |
-          if [ $(date -d +8hour -u +%H) -lt 10 ]; then
-            SNAME="jd_jxd.js"
-            if [ -f $SNAME ]; then
-              node $SNAME
-            else
-              echo -e "\nScript does not exist.\n"
-            fi
-          fi
-        env:
-          JD_COOKIE: ${{ secrets.JD_COOKIE }}
-          JD_USER_AGENT: ${{ secrets.JD_USER_AGENT }}
-          JD_DEBUG: ${{ secrets.JD_DEBUG }}
-          PUSH_KEY: ${{ secrets.PUSH_KEY }}
-          QQ_SKEY: ${{ secrets.QQ_SKEY }}
-          QQ_MODE: ${{ secrets.QQ_MODE }}
-          BARK_PUSH: ${{ secrets.BARK_PUSH }}
-          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
-          TG_USER_ID: ${{ secrets.TG_USER_ID }}
-          BARK_SOUND: ${{ secrets.BARK_SOUND }}
-          DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
-          DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
-          IGOT_PUSH_KEY: ${{ secrets.IGOT_PUSH_KEY }}
-          JD_JXD_EXCHANGE: ${{ secrets.JD_JXD_EXCHANGE }}
-      - name: '运行 【赚京豆脚本】'
-        run: |
-          SNAME="jd_syj.js"
-          if [ -f $SNAME ]; then
-            node $SNAME
-          else
-            echo -e "\nScript does not exist.\n"
-          fi
-        env:
-          JD_COOKIE: ${{ secrets.JD_COOKIE }}
-          JD_USER_AGENT: ${{ secrets.JD_USER_AGENT }}
-          JD_DEBUG: ${{ secrets.JD_DEBUG }}
-          PUSH_KEY: ${{ secrets.PUSH_KEY }}
-          QQ_SKEY: ${{ secrets.QQ_SKEY }}
-          QQ_MODE: ${{ secrets.QQ_MODE }}
-          BARK_PUSH: ${{ secrets.BARK_PUSH }}
-          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
-          TG_USER_ID: ${{ secrets.TG_USER_ID }}
-          BARK_SOUND: ${{ secrets.BARK_SOUND }}
           DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
           DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
           IGOT_PUSH_KEY: ${{ secrets.IGOT_PUSH_KEY }}
       - name: '运行 【超级摇一摇脚本】'
         run: |
           SNAME="z_shake.js"
-          SCODE=$(curl -O -s -w %{http_code} "https://raw.githubusercontent.com/Tersd07/st1/dust/i-chenzhe/$SNAME")
-          if [ $SCODE = 200 -a -f $SNAME ]; then
-            node _mod.js $SNAME
-            node $SNAME
+          if [[ "${{ secrets._EXCLUDE_RUN }}" =~ "$SNAME" ]]; then
+            echo -e "\n$SNAME has been excluded.\n"
           else
-            echo -e "\nScript does not exist.\n"
-          fi
-        env:
-          JD_COOKIE: ${{ secrets.JD_COOKIE }}
-          JD_USER_AGENT: ${{ secrets.JD_USER_AGENT }}
-          JD_DEBUG: ${{ secrets.JD_DEBUG }}
-          PUSH_KEY: ${{ secrets.PUSH_KEY }}
-          QQ_SKEY: ${{ secrets.QQ_SKEY }}
-          QQ_MODE: ${{ secrets.QQ_MODE }}
-          BARK_PUSH: ${{ secrets.BARK_PUSH }}
-          BARK_SOUND: ${{ secrets.BARK_SOUND }}
-          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
-          TG_USER_ID: ${{ secrets.TG_USER_ID }}
-          DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
-          DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
-          IGOT_PUSH_KEY: ${{ secrets.IGOT_PUSH_KEY }}
-      - name: '运行 【粉丝互动脚本】'
-        run: |
-          if [ $(date -d +8hour -u +%H) -lt 10 ]; then
-            SNAME="z_fanslove.js"
             SCODE=$(curl -O -s -w %{http_code} "https://raw.githubusercontent.com/Tersd07/st1/dust/i-chenzhe/$SNAME")
             if [ $SCODE = 200 -a -f $SNAME ]; then
               node _mod.js $SNAME
@@ -400,6 +488,40 @@ jobs:
           JD_USER_AGENT: ${{ secrets.JD_USER_AGENT }}
           JD_DEBUG: ${{ secrets.JD_DEBUG }}
           PUSH_KEY: ${{ secrets.PUSH_KEY }}
+          PUSH_PLUS_USER: ${{ secrets.PUSH_PLUS_USER }}
+          PUSH_PLUS_TOKEN: ${{ secrets.PUSH_PLUS_TOKEN }}
+          QQ_SKEY: ${{ secrets.QQ_SKEY }}
+          QQ_MODE: ${{ secrets.QQ_MODE }}
+          BARK_PUSH: ${{ secrets.BARK_PUSH }}
+          BARK_SOUND: ${{ secrets.BARK_SOUND }}
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_USER_ID: ${{ secrets.TG_USER_ID }}
+          DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
+          DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
+          IGOT_PUSH_KEY: ${{ secrets.IGOT_PUSH_KEY }}
+      - name: '运行 【粉丝互动脚本】'
+        run: |
+          if [ $(date -d +8hour -u +%H) -lt 10 ]; then
+            SNAME="z_fanslove.js"
+            if [[ "${{ secrets._EXCLUDE_RUN }}" =~ "$SNAME" ]]; then
+              echo -e "\n$SNAME has been excluded.\n"
+            else
+              SCODE=$(curl -O -s -w %{http_code} "https://raw.githubusercontent.com/Tersd07/st1/dust/i-chenzhe/$SNAME")
+              if [ $SCODE = 200 -a -f $SNAME ]; then
+                node _mod.js $SNAME
+                node $SNAME
+              else
+                echo -e "\nScript does not exist.\n"
+              fi
+            fi
+          fi
+        env:
+          JD_COOKIE: ${{ secrets.JD_COOKIE }}
+          JD_USER_AGENT: ${{ secrets.JD_USER_AGENT }}
+          JD_DEBUG: ${{ secrets.JD_DEBUG }}
+          PUSH_KEY: ${{ secrets.PUSH_KEY }}
+          PUSH_PLUS_USER: ${{ secrets.PUSH_PLUS_USER }}
+          PUSH_PLUS_TOKEN: ${{ secrets.PUSH_PLUS_TOKEN }}
           QQ_SKEY: ${{ secrets.QQ_SKEY }}
           QQ_MODE: ${{ secrets.QQ_MODE }}
           BARK_PUSH: ${{ secrets.BARK_PUSH }}
@@ -412,18 +534,24 @@ jobs:
       - name: '运行 【小魔方脚本】'
         run: |
           SNAME="z_xmf.js"
-          SCODE=$(curl -O -s -w %{http_code} "https://raw.githubusercontent.com/Tersd07/st1/dust/i-chenzhe/$SNAME")
-          if [ $SCODE = 200 -a -f $SNAME ]; then
-            node _mod.js $SNAME
-            node $SNAME
+          if [[ "${{ secrets._EXCLUDE_RUN }}" =~ "$SNAME" ]]; then
+            echo -e "\n$SNAME has been excluded.\n"
           else
-            echo -e "\nScript does not exist.\n"
+            SCODE=$(curl -O -s -w %{http_code} "https://raw.githubusercontent.com/Tersd07/st1/dust/i-chenzhe/$SNAME")
+            if [ $SCODE = 200 -a -f $SNAME ]; then
+              node _mod.js $SNAME
+              node $SNAME
+            else
+              echo -e "\nScript does not exist.\n"
+            fi
           fi
         env:
           JD_COOKIE: ${{ secrets.JD_COOKIE }}
           JD_USER_AGENT: ${{ secrets.JD_USER_AGENT }}
           JD_DEBUG: ${{ secrets.JD_DEBUG }}
           PUSH_KEY: ${{ secrets.PUSH_KEY }}
+          PUSH_PLUS_USER: ${{ secrets.PUSH_PLUS_USER }}
+          PUSH_PLUS_TOKEN: ${{ secrets.PUSH_PLUS_TOKEN }}
           QQ_SKEY: ${{ secrets.QQ_SKEY }}
           QQ_MODE: ${{ secrets.QQ_MODE }}
           BARK_PUSH: ${{ secrets.BARK_PUSH }}
@@ -433,31 +561,3 @@ jobs:
           DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
           DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
           IGOT_PUSH_KEY: ${{ secrets.IGOT_PUSH_KEY }}
-      - name: '运行 【大转盘脚本】'
-        run: |
-          SNAME="z_marketLottery.js"
-          SCODE=$(curl -O -s -w %{http_code} "https://raw.githubusercontent.com/Tersd07/st1/dust/i-chenzhe/$SNAME")
-          if [ $SCODE = 200 -a -f $SNAME ]; then
-            node _mod.js $SNAME
-            node $SNAME
-          else
-            echo -e "\nScript does not exist.\n"
-          fi
-        env:
-          JD_COOKIE: ${{ secrets.JD_COOKIE }}
-          JD_USER_AGENT: ${{ secrets.JD_USER_AGENT }}
-          JD_DEBUG: ${{ secrets.JD_DEBUG }}
-          PUSH_KEY: ${{ secrets.PUSH_KEY }}
-          QQ_SKEY: ${{ secrets.QQ_SKEY }}
-          QQ_MODE: ${{ secrets.QQ_MODE }}
-          BARK_PUSH: ${{ secrets.BARK_PUSH }}
-          BARK_SOUND: ${{ secrets.BARK_SOUND }}
-          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
-          TG_USER_ID: ${{ secrets.TG_USER_ID }}
-          DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
-          DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
-          IGOT_PUSH_KEY: ${{ secrets.IGOT_PUSH_KEY }}
-      - name: Delete workflow runs
-        uses: Mattraks/delete-workflow-runs@main
-        with:
-          retain_days: 8
