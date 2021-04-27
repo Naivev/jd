@@ -417,7 +417,6 @@ jobs:
           IGOT_PUSH_KEY: ${{ secrets.IGOT_PUSH_KEY }}
       - name: '运行 【领金贴脚本】'
         run: |
-          if [ $(date -d +8hour -u +%H) -lt 10 ]; then
             SNAME="jd_jin_tie.js"
             if [[ "${{ secrets._EXCLUDE_RUN }}" =~ "$SNAME" ]]; then
               echo -e "\n$SNAME has been excluded.\n"
