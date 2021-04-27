@@ -2,7 +2,7 @@ name: jd_try
 on:
   workflow_dispatch:
   schedule:
-    - cron: '15 3 * * *'
+    - cron: '0 0 * * *'
 jobs:
   build:
     runs-on: ubuntu-latest
