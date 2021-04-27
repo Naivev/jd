@@ -415,7 +415,7 @@ jobs:
           DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
           DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
           IGOT_PUSH_KEY: ${{ secrets.IGOT_PUSH_KEY }}
- - name: '运行 【球队赢好礼脚本】'
+      - name: '运行 【球队赢好礼脚本】'
         run: |
           SNAME="jd_tcl.js"
           if [[ "${{ secrets._EXCLUDE_RUN }}" =~ "$SNAME" ]]; then
