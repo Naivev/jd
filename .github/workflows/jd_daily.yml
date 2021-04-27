@@ -425,7 +425,6 @@ jobs:
             else
               echo -e "\nScript does not exist.\n"
             fi
-          fi
         env:
           JD_COOKIE: ${{ secrets.JD_COOKIE }}
           JD_USER_AGENT: ${{ secrets.JD_USER_AGENT }}
