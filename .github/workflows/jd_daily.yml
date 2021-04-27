@@ -421,7 +421,7 @@ jobs:
             SNAME="jd_jin_tie.js"
             if [[ "${{ secrets._EXCLUDE_RUN }}" =~ "$SNAME" ]]; then
               echo -e "\n$SNAME has been excluded.\n"
-            else if [ -f $SNAME ]; then
+            else [ -f $SNAME ]; then
               node $SNAME
             else
               echo -e "\nScript does not exist.\n"
