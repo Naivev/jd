@@ -1,11 +1,14 @@
+# This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+
 name: jd_daily
 
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 0 * * *'
+    - cron: '0 8 * * *'
   repository_dispatch:
-    types: daily_sign
+    types: jd_daily
 jobs:
   build:
 
@@ -194,6 +197,7 @@ jobs:
           DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
           IGOT_PUSH_KEY: ${{ secrets.IGOT_PUSH_KEY }}
           CASH_NOTIFY_CONTROL: ${{ secrets.CASH_NOTIFY_CONTROL }}
+          CASH_EXCHANGE: ${{ secrets.CASH_EXCHANGE }}
       - name: '运行 【crazy joy 脚本】'
         run: |
           SNAME="jd_crazy_joy.js"
@@ -308,36 +312,10 @@ jobs:
           IGOT_PUSH_KEY: ${{ secrets.IGOT_PUSH_KEY }}
           JDZZ_SHARECODES: ${{ secrets.JDZZ_SHARECODES }}
           JDZZ_NOTIFY_CONTROL: ${{ secrets.JDZZ_NOTIFY_CONTROL }}
-      - name: '运行 【女装盲盒抽京豆脚本】'
-        run: |
-          SNAME="jd_nzmh.js"
-          if [[ "${{ secrets._EXCLUDE_RUN }}" =~ "$SNAME" ]]; then
-            echo -e "\n$SNAME has been excluded.\n"
-          elif [ -f $SNAME ]; then
-            node $SNAME
-          else
-            echo -e "\nScript does not exist.\n"
-          fi
-        env:
-          JD_COOKIE: ${{ secrets.JD_COOKIE }}
-          JD_USER_AGENT: ${{ secrets.JD_USER_AGENT }}
-          JD_DEBUG: ${{ secrets.JD_DEBUG }}
-          PUSH_KEY: ${{ secrets.PUSH_KEY }}
-          PUSH_PLUS_USER: ${{ secrets.PUSH_PLUS_USER }}
-          PUSH_PLUS_TOKEN: ${{ secrets.PUSH_PLUS_TOKEN }}
-          QQ_SKEY: ${{ secrets.QQ_SKEY }}
-          QQ_MODE: ${{ secrets.QQ_MODE }}
-          BARK_PUSH: ${{ secrets.BARK_PUSH }}
-          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
-          TG_USER_ID: ${{ secrets.TG_USER_ID }}
-          BARK_SOUND: ${{ secrets.BARK_SOUND }}
-          DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
-          DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
-          IGOT_PUSH_KEY: ${{ secrets.IGOT_PUSH_KEY }}
       - name: '运行 【京小兑脚本】'
         run: |
           if [ $(date -d +8hour -u +%H) -lt 10 ]; then
-            SNAME="jd_jxd.js"
+            SNAME="activity/jd_jxd.js"
             if [[ "${{ secrets._EXCLUDE_RUN }}" =~ "$SNAME" ]]; then
               echo -e "\n$SNAME has been excluded.\n"
             elif [ -f $SNAME ]; then
@@ -392,6 +370,88 @@ jobs:
       - name: '运行 【大转盘脚本】'
         run: |
           SNAME="jd_market_lottery.js"
+          if [[ "${{ secrets._EXCLUDE_RUN }}" =~ "$SNAME" ]]; then
+            echo -e "\n$SNAME has been excluded.\n"
+          elif [ -f $SNAME ]; then
+            node $SNAME
+          else
+            echo -e "\nScript does not exist.\n"
+          fi
+        env:
+          JD_COOKIE: ${{ secrets.JD_COOKIE }}
+          JD_USER_AGENT: ${{ secrets.JD_USER_AGENT }}
+          JD_DEBUG: ${{ secrets.JD_DEBUG }}
+          PUSH_KEY: ${{ secrets.PUSH_KEY }}
+          PUSH_PLUS_USER: ${{ secrets.PUSH_PLUS_USER }}
+          PUSH_PLUS_TOKEN: ${{ secrets.PUSH_PLUS_TOKEN }}
+          QQ_SKEY: ${{ secrets.QQ_SKEY }}
+          QQ_MODE: ${{ secrets.QQ_MODE }}
+          BARK_PUSH: ${{ secrets.BARK_PUSH }}
+          BARK_SOUND: ${{ secrets.BARK_SOUND }}
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_USER_ID: ${{ secrets.TG_USER_ID }}
+          DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
+          DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
+          IGOT_PUSH_KEY: ${{ secrets.IGOT_PUSH_KEY }}
+      - name: '运行 【领金贴脚本】'
+        run: |
+          if [ $(date -d +8hour -u +%H) -lt 10 ]; then
+            SNAME="jd_jin_tie.js"
+            if [[ "${{ secrets._EXCLUDE_RUN }}" =~ "$SNAME" ]]; then
+              echo -e "\n$SNAME has been excluded.\n"
+            elif [ -f $SNAME ]; then
+              node $SNAME
+            else
+              echo -e "\nScript does not exist.\n"
+            fi
+          fi
+        env:
+          JD_COOKIE: ${{ secrets.JD_COOKIE }}
+          JD_USER_AGENT: ${{ secrets.JD_USER_AGENT }}
+          JD_DEBUG: ${{ secrets.JD_DEBUG }}
+          PUSH_KEY: ${{ secrets.PUSH_KEY }}
+          PUSH_PLUS_USER: ${{ secrets.PUSH_PLUS_USER }}
+          PUSH_PLUS_TOKEN: ${{ secrets.PUSH_PLUS_TOKEN }}
+          QQ_SKEY: ${{ secrets.QQ_SKEY }}
+          QQ_MODE: ${{ secrets.QQ_MODE }}
+          BARK_PUSH: ${{ secrets.BARK_PUSH }}
+          BARK_SOUND: ${{ secrets.BARK_SOUND }}
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_USER_ID: ${{ secrets.TG_USER_ID }}
+          DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
+          DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
+          IGOT_PUSH_KEY: ${{ secrets.IGOT_PUSH_KEY }}
+      - name: '运行 【全民开红包脚本】'
+        run: |
+          if [ $(date -d +8hour -u +%H) -lt 10 ]; then
+            SNAME="jd_redPacket.js"
+            if [[ "${{ secrets._EXCLUDE_RUN }}" =~ "$SNAME" ]]; then
+              echo -e "\n$SNAME has been excluded.\n"
+            elif [ -f $SNAME ]; then
+              node $SNAME
+            else
+              echo -e "\nScript does not exist.\n"
+            fi
+          fi
+        env:
+          JD_COOKIE: ${{ secrets.JD_COOKIE }}
+          JD_USER_AGENT: ${{ secrets.JD_USER_AGENT }}
+          JD_DEBUG: ${{ secrets.JD_DEBUG }}
+          PUSH_KEY: ${{ secrets.PUSH_KEY }}
+          PUSH_PLUS_USER: ${{ secrets.PUSH_PLUS_USER }}
+          PUSH_PLUS_TOKEN: ${{ secrets.PUSH_PLUS_TOKEN }}
+          QQ_SKEY: ${{ secrets.QQ_SKEY }}
+          QQ_MODE: ${{ secrets.QQ_MODE }}
+          BARK_PUSH: ${{ secrets.BARK_PUSH }}
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_USER_ID: ${{ secrets.TG_USER_ID }}
+          BARK_SOUND: ${{ secrets.BARK_SOUND }}
+          DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
+          DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
+          IGOT_PUSH_KEY: ${{ secrets.IGOT_PUSH_KEY }}
+      - name: '运行 【每日抽奖脚本】'
+        run: |
+          SNAME="jd_daily_lottery.js"
           if [[ "${{ secrets._EXCLUDE_RUN }}" =~ "$SNAME" ]]; then
             echo -e "\n$SNAME has been excluded.\n"
           elif [ -f $SNAME ]; then
@@ -477,6 +537,36 @@ jobs:
           DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
           DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
           IGOT_PUSH_KEY: ${{ secrets.IGOT_PUSH_KEY }}
+      - name: '运行 【母婴跳一跳脚本】'
+        run: |
+          SNAME="z_mother_jump.js"
+          if [[ "${{ secrets._EXCLUDE_RUN }}" =~ "$SNAME" ]]; then
+            echo -e "\n$SNAME has been excluded.\n"
+          else
+            SCODE=$(curl -O -s -w %{http_code} "https://raw.githubusercontent.com/Tersd07/st1/dust/i-chenzhe/$SNAME")
+            if [ $SCODE = 200 -a -f $SNAME ]; then
+              node _mod.js $SNAME
+              node $SNAME
+            else
+              echo -e "\nScript does not exist.\n"
+            fi
+          fi
+        env:
+          JD_COOKIE: ${{ secrets.JD_COOKIE }}
+          JD_USER_AGENT: ${{ secrets.JD_USER_AGENT }}
+          JD_DEBUG: ${{ secrets.JD_DEBUG }}
+          PUSH_KEY: ${{ secrets.PUSH_KEY }}
+          PUSH_PLUS_USER: ${{ secrets.PUSH_PLUS_USER }}
+          PUSH_PLUS_TOKEN: ${{ secrets.PUSH_PLUS_TOKEN }}
+          QQ_SKEY: ${{ secrets.QQ_SKEY }}
+          QQ_MODE: ${{ secrets.QQ_MODE }}
+          BARK_PUSH: ${{ secrets.BARK_PUSH }}
+          BARK_SOUND: ${{ secrets.BARK_SOUND }}
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_USER_ID: ${{ secrets.TG_USER_ID }}
+          DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
+          DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
+          IGOT_PUSH_KEY: ${{ secrets.IGOT_PUSH_KEY }}
       - name: '运行 【小魔方脚本】'
         run: |
           SNAME="z_xmf.js"
@@ -507,3 +597,7 @@ jobs:
           DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
           DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
           IGOT_PUSH_KEY: ${{ secrets.IGOT_PUSH_KEY }}
+      - name: Delete workflow runs
+        uses: Mattraks/delete-workflow-runs@main
+        with:
+          retain_days: 8
