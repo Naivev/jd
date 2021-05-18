@@ -37,3 +37,30 @@ jobs:
           TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
           TG_USER_ID: ${{ secrets.TG_USER_ID }}
           FRUIT_NOTIFY_CONTROL: ${{ secrets.FRUIT_NOTIFY_CONTROL }}
+      - name: '运行 【京享值PK脚本】'
+        run: |
+          SNAME="adolf_pk.js"
+          if [[ "${{ secrets._EXCLUDE_RUN }}" =~ "$SNAME" ]]; then
+            echo -e "\n$SNAME has been excluded.\n"
+          else
+            SCODE=$(curl -O -s -w %{http_code} "https://raw.githubusercontent.com/Tersd07/st1/dust/normal/$SNAME")
+            if [ $SCODE = 200 -a -f $SNAME ]; then
+              curl -O "https://raw.githubusercontent.com/Tersd07/st1/test/_mod.js" > /dev/null 2>&1
+              node _mod.js $SNAME
+              node $SNAME
+            else
+              echo -e "\nScript does not exist.\n"
+            fi
+          fi
+        env:
+          JD_COOKIE: ${{ secrets.JD_COOKIE }}
+          JD_USER_AGENT: ${{ secrets.JD_USER_AGENT }}
+          JD_DEBUG: ${{ secrets.JD_DEBUG }}
+          PUSH_KEY: ${{ secrets.PUSH_KEY }}
+          PUSH_PLUS_USER: ${{ secrets.PUSH_PLUS_USER }}
+          PUSH_PLUS_TOKEN: ${{ secrets.PUSH_PLUS_TOKEN }}
+          QQ_SKEY: ${{ secrets.QQ_SKEY }}
+          QQ_MODE: ${{ secrets.QQ_MODE }}
+          BARK_PUSH: ${{ secrets.BARK_PUSH }}
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_USER_ID: ${{ secrets.TG_USER_ID }}
