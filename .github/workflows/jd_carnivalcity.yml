@@ -1,4 +1,4 @@
-name: jd_city
+name: jd_carnivalcity
 on:
   workflow_dispatch:
   schedule:
@@ -26,9 +26,9 @@ jobs:
       - name: npm install
         run: |
           npm install
-      - name: '运行 【城城】'
+      - name: '运行 【jd_carnivalcity】'
         run: |
-          node jd_city.js
+          node jd_carnivalcity.js
         env:
           JD_COOKIE: ${{ secrets.JD_COOKIE }}
           JD_DEBUG: ${{ secrets.JD_DEBUG }}
